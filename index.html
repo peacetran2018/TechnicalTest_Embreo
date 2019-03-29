@@ -1,0 +1,45 @@
+<html>
+
+<head></head>
+
+<body>
+    Tran Tuan An
+    <div>
+        <p>Question 1: Shortest Transformations</p>
+        <label id="shortestCases"></label>
+    </div>
+    <br>
+    <div>
+        Question 2: <br>Maximum of Points on same Straight line
+        <Strong><label id="maxPoints"></label></Strong>
+    </div>
+</body>
+<script src="question1.js"></script>
+<script>
+    var beginWord = "hit";
+    var endWord = "cog";
+    var wordList = ["hot", "dot", "dog", "lot", "log", "cog"];
+    var wordLadders = findLadders(beginWord, endWord, wordList);
+    if (wordLadders != undefined) {
+        var shortestTranformation = [];
+        var minLen = wordLadders[0].length;
+        for (var i = 1; i < wordLadders.length; i++) {
+            if (minLen >= wordLadders[i].length) {
+                minLen = wordLadders[i].length;
+                shortestTranformation.push(wordLadders[i]);
+            }
+        }
+
+        var shortestCases = document.getElementById("shortestCases");
+        for (var x in shortestTranformation) {
+            shortestCases.innerHTML += "[" + shortestTranformation[x] + "]<br>";
+        }
+    }
+</script>
+<script src="question2.js"></script>
+<script>
+    var solution = findSolution([new point(1, 1), new point(2, 4), new point(3, 10)]);
+    var maxPoints = document.getElementById("maxPoints");
+    maxPoints.innerHTML = solution;
+</script>
+</html>
